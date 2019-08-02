@@ -4,7 +4,7 @@ import com.google.gson.annotations.SerializedName;
 
 public class Task {
 
-    @SerializedName("id")
+    @SerializedName("_id")
     private String id;
     @SerializedName("description")
     private String description;
@@ -16,7 +16,6 @@ public class Task {
     private String updatedAt;
     @SerializedName("owner")
     private String owner;
-    @SerializedName("")
 
 
 
@@ -57,5 +56,21 @@ public class Task {
 
     public void setUpdatedAt(String updatedAt) {
         this.updatedAt = updatedAt;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getOwner() {
+        return owner;
+    }
+
+    public void setOwner(String owner) {
+        this.owner = owner;
     }
 }
