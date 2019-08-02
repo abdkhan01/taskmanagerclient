@@ -1,0 +1,15 @@
+<resources>
+    <!--Generic Strings-->
+    <string name="app_name">task-manager-client</string>
+    <string name="yesterday">Yesterday</string>
+    <string name="today">Today</string>
+    <string name="lastweek">Last Week</string>
+    <string name="delete">Delete</string>
+
+
+    <!--Testing Strings-->
+    <string name="time">12:30 pm</string>
+    <string name="description">Hello this is a test description</string>
+
+
+</resources>
