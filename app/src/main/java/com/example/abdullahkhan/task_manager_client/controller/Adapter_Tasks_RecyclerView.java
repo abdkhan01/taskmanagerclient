@@ -1,4 +1,4 @@
-package com.example.abdullahkhan.task_manager_client.Controller;
+package com.example.abdullahkhan.task_manager_client.controller;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,7 +14,7 @@ import com.example.abdullahkhan.task_manager_client.R;
 
 import java.util.List;
 
-import com.example.abdullahkhan.task_manager_client.Model.Task;
+import com.example.abdullahkhan.task_manager_client.model.Task;
 
 public class Adapter_Tasks_RecyclerView extends RecyclerView.Adapter <Adapter_Tasks_RecyclerView.ViewHolder> {
 

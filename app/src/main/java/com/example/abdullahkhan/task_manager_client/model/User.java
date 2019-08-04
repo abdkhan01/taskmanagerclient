@@ -1,4 +1,4 @@
-package com.example.abdullahkhan.task_manager_client.Model;
+package com.example.abdullahkhan.task_manager_client.model;
 
 import com.google.gson.annotations.SerializedName;
 

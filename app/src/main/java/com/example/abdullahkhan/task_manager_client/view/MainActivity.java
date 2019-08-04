@@ -9,8 +9,8 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-import com.example.abdullahkhan.task_manager_client.Controller.Adapter_Tasks_RecyclerView;
-import com.example.abdullahkhan.task_manager_client.Model.Task;
+import com.example.abdullahkhan.task_manager_client.controller.Adapter_Tasks_RecyclerView;
+import com.example.abdullahkhan.task_manager_client.model.Task;
 import com.example.abdullahkhan.task_manager_client.R;
 
 public class MainActivity extends AppCompatActivity {

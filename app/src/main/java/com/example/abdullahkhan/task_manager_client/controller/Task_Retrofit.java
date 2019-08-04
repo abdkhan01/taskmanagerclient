@@ -1,6 +1,6 @@
-package com.example.abdullahkhan.task_manager_client.Controller;
+package com.example.abdullahkhan.task_manager_client.controller;
 
-import com.example.abdullahkhan.task_manager_client.Model.Task;
+import com.example.abdullahkhan.task_manager_client.model.Task;
 
 import java.util.ArrayList;
 
