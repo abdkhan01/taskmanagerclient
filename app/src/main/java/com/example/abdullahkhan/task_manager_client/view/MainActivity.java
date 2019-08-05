@@ -1,5 +1,6 @@
 package com.example.abdullahkhan.task_manager_client.view;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -15,6 +16,7 @@ import com.example.abdullahkhan.task_manager_client.R;
 
 public class MainActivity extends AppCompatActivity {
 
+    public static boolean auth = false;
     private TextView textView_lastWeek;
     private TextView textView_today;
     private TextView textView_yesterday;
@@ -35,6 +37,12 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        if(!auth){
+            Intent intent = new Intent(this,SignupActivity.class);
+            startActivity(intent);
+            finish();
+        }
 
         createRecyclerViews();
     }

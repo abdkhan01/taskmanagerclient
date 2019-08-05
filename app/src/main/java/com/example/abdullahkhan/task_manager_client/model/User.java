@@ -30,6 +30,12 @@ public class User {
         this.avatar = avatar;
     }
 
+    public User(String name, String email, String password) {
+        this.name = name;
+        this.email = email;
+        this.password = password;
+    }
+
     public String getId() {
         return id;
     }
