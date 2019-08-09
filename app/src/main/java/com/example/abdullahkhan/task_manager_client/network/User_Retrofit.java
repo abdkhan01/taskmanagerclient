@@ -24,7 +24,7 @@ public interface User_Retrofit {
     Call<LoginResponse> postUser(@Body User user);
 
     @POST("/users/login")
-    Call<LoginResponse> loginUser(@Field("email") String email, @Field("password") String password);
+    Call<LoginResponse> loginUser(@Body User user);
 
     @POST("/users/logout")
     Call<ResponseBody> logoutUser(@Header("Authorization") String authorization);
