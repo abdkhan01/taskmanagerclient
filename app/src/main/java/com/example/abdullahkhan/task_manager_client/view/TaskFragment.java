@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.abdullahkhan.task_manager_client.R;
@@ -15,7 +16,7 @@ public class TaskFragment extends Fragment {
 
     private Button deleteButton;
     private TextView timeTextView;
-    private TextView descriptionTextView;
+    private EditText descriptionTextView;
     private String TAG;
     private String description;
     private String time;
@@ -53,7 +54,7 @@ public class TaskFragment extends Fragment {
     public void onViewCreated(View view, Bundle savedInstanceState) {
         deleteButton = (Button) view.findViewById(R.id.delete_button);
         timeTextView = (TextView) view.findViewById(R.id.time_textView);
-        descriptionTextView = (TextView) view.findViewById(R.id.description_textView);
+        descriptionTextView = (EditText) view.findViewById(R.id.description_textView);
 
         timeTextView.setText(time);
         descriptionTextView.setText(description);

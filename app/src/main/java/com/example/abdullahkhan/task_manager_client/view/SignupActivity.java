@@ -3,7 +3,6 @@ package com.example.abdullahkhan.task_manager_client.view;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -12,7 +11,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.abdullahkhan.task_manager_client.R;
-import com.example.abdullahkhan.task_manager_client.controller.User_Retrofit;
+import com.example.abdullahkhan.task_manager_client.network.User_Retrofit;
 import com.example.abdullahkhan.task_manager_client.model.LoginResponse;
 import com.example.abdullahkhan.task_manager_client.model.User;
 import com.example.abdullahkhan.task_manager_client.network.RetrofitInstance;
@@ -25,7 +24,7 @@ import retrofit2.Response;
 
 import static com.example.abdullahkhan.task_manager_client.view.MainActivity.auth;
 
-public class SignupActivity extends AppCompatActivity {
+public class SignupActivity extends Main2Activity {
     private static final String TAG = "SignupActivity";
 
     @BindView(R.id.input_name) EditText _nameText;
@@ -55,7 +54,10 @@ public class SignupActivity extends AppCompatActivity {
             }
         });
     }
-
+    @Override
+    public int getLayoutResource() {
+        return R.layout.activity_signup;
+    }
     public void signup() {
         Log.d(TAG, "Signup");
 
@@ -92,21 +94,10 @@ public class SignupActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<LoginResponse> call, Throwable t) {
-                Toast.makeText(SignupActivity.this, "Signup Failed " + t.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(SignupActivity.this, "Signup Failed" + t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
 
-
-//        new android.os.Handler().postDelayed(
-//                new Runnable() {
-//                    public void run() {
-//                        // On complete call either onSignupSuccess or onSignupFailed
-//                        // depending on success
-//                        onSignupSuccess();
-//                        // onSignupFailed();
-//                        progressDialog.dismiss();
-//                    }
-//                }, 10000);
     }
 
 

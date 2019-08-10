@@ -42,6 +42,7 @@ public class Adapter_Tasks_RecyclerView extends RecyclerView.Adapter <Adapter_Ta
                     Bundle bundle = new Bundle();
                     bundle.putSerializable("description",values.get(getAdapterPosition()).getDescription());
                     bundle.putSerializable("time",values.get(getAdapterPosition()).getCreatedAt());
+                    bundle.putSerializable("screen","task");
 
                     intent.putExtras(bundle);
                     v.getContext().startActivity(intent);

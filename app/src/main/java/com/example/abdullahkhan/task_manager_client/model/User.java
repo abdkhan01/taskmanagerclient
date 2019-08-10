@@ -4,6 +4,8 @@ import com.google.gson.annotations.SerializedName;
 
 import java.nio.Buffer;
 
+import static org.json.JSONObject.NULL;
+
 public class User {
 
     @SerializedName("_id")
@@ -29,9 +31,16 @@ public class User {
         this.age = age;
         this.avatar = avatar;
     }
+    public User(){
 
+    }
     public User(String name, String email, String password) {
         this.name = name;
+        this.email = email;
+        this.password = password;
+    }
+
+    public User( String email, String password) {
         this.email = email;
         this.password = password;
     }

@@ -1,8 +1,9 @@
 package com.example.abdullahkhan.task_manager_client.view;
 
 import android.app.ProgressDialog;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
 import android.content.Intent;
@@ -13,24 +14,38 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.abdullahkhan.task_manager_client.R;
+import com.example.abdullahkhan.task_manager_client.controller.Api_Functions;
+import com.example.abdullahkhan.task_manager_client.network.User_Retrofit;
+import com.example.abdullahkhan.task_manager_client.model.LoginResponse;
+import com.example.abdullahkhan.task_manager_client.model.User;
+import com.example.abdullahkhan.task_manager_client.network.RetrofitInstance;
 
 import butterknife.ButterKnife;
 import butterknife.BindView;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
-public class LoginActivity extends AppCompatActivity {
+import static com.example.abdullahkhan.task_manager_client.view.MainActivity.auth;
+
+public class LoginActivity extends Main2Activity {
     private static final String TAG = "LoginActivity";
     private static final int REQUEST_SIGNUP = 0;
+    private ProgressDialog progressDialog;
 
     @BindView(R.id.input_email) EditText _emailText;
     @BindView(R.id.input_password) EditText _passwordText;
-    @BindView(R.id.btn_login) Button _loginButton;
+    @BindView(R.id.btn_login)  Button _loginButton;
     @BindView(R.id.link_signup) TextView _signupLink;
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
+//        setContentView(R.layout.activity_login);
         ButterKnife.bind(this);
+
+        Log.d(TAG,"checking on reate Login Activity");
 
         _loginButton.setOnClickListener(new View.OnClickListener() {
 
@@ -50,10 +65,13 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
     }
-
+    @Override
+    public int getLayoutResource() {
+        return R.layout.activity_login;
+    }
     public void login() {
         Log.d(TAG, "Login");
-
+        progressDialog = new ProgressDialog(LoginActivity.this);
         if (!validate()) {
             onLoginFailed();
             return;
@@ -61,25 +79,21 @@ public class LoginActivity extends AppCompatActivity {
 
         _loginButton.setEnabled(false);
 
-        final ProgressDialog progressDialog = new ProgressDialog(LoginActivity.this);
+        progressDialog = new ProgressDialog(LoginActivity.this);
         progressDialog.setIndeterminate(true);
         progressDialog.setMessage("Authenticating...");
         progressDialog.show();
 
         String email = _emailText.getText().toString();
         String password = _passwordText.getText().toString();
+        Api_Functions api_functions;
 
-        // TODO: Implement your own authentication logic here.
+        api_functions = new Api_Functions(this,null);
+        api_functions.loginUser(email,password,sharedPref);
 
-        new android.os.Handler().postDelayed(
-                new Runnable() {
-                    public void run() {
-                        // On complete call either onLoginSuccess or onLoginFailed
-                        onLoginSuccess();
-                        // onLoginFailed();
-                        progressDialog.dismiss();
-                    }
-                }, 3000);
+        Log.d(TAG,"checking asynchnorous");
+
+
     }
 
 
@@ -102,14 +116,27 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void onLoginSuccess() {
+
+        Log.d(TAG,"On login success");
         _loginButton.setEnabled(true);
+
+        Intent intent = new Intent (this, MainActivity.class);
+        startActivity(intent);
+
+        progressDialog.dismiss();
         finish();
     }
 
     public void onLoginFailed() {
+        SharedPreferences.Editor editor = sharedPref.edit();
+        editor.putString("status", null);
+        editor.apply();
+
         Toast.makeText(getBaseContext(), "Login failed", Toast.LENGTH_LONG).show();
 
         _loginButton.setEnabled(true);
+        progressDialog.dismiss();
+        finish();
     }
 
     public boolean validate() {
